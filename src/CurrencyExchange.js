@@ -36,7 +36,42 @@ function CurrencyExchange() {
       yes: "Yes", 
       no: "No", 
     }, 
-
+    hy: {
+      title: 'Արտարժույթի Փոխանակում',
+      sellCurrency: 'Վաճառել Արտարժույթ',
+      buyCurrency: 'Գնել Արտարժույթ',
+      exchangeRate: 'Փոխարժեք',
+      enterAmount: 'Մուտքագրեք գումարը',
+      maxLimit: 'Առավելագույն սահմանաչափ',
+      amountExceeds: 'Գումարը գերազանցում է սահմանաչափը!',
+      total: 'Ընդհանուր',
+      confirm: 'Հաստատել',
+      importMoney: 'Խնդրում ենք ներդնել գումարը',
+      takeMoney: 'Խնդրում ենք վերցնել գումարը',
+      needReceipt: 'Ցանկանու՞մ եք ստացական:',
+      thanks: 'Շնորհակալություն վստահության համար!',
+      home: 'Գլխավոր Էջ',
+      yes: 'Այո',
+      no: 'Ոչ',
+    },
+    ru: {
+      title: 'Обмен Валюты',
+      sellCurrency: 'Продать Валюту',
+      buyCurrency: 'Купить Валюту',
+      exchangeRate: 'Обменный Курс',
+      enterAmount: 'Введите Сумму',
+      maxLimit: 'Максимальный лимит для',
+      amountExceeds: 'Сумма превышает лимит!',
+      total: 'Итог',
+      confirm: 'Подтвердить',
+      importMoney: 'Пожалуйста, внесите деньги',
+      takeMoney: 'Пожалуйста, заберите деньги',
+      needReceipt: 'Хотите чек?',
+      thanks: 'Спасибо за доверие!',
+      home: 'Домашняя Страница',
+      yes: 'Да',
+      no: 'Нет',
+    },
   }; 
  
   const moneyLimitations = { 
@@ -90,13 +125,23 @@ function CurrencyExchange() {
   useEffect(() => { 
     if (amount && exchangeRate) { 
       setTotal((amount * exchangeRate).toFixed(2)); 
+      console.log("Calculated total amount:", amount)
       setAmountExceedsLimit(amount > moneyLimitations[sellingCurrency]); 
     } else { 
       setTotal(null); 
       setAmountExceedsLimit(false); 
     } 
   }, [amount, exchangeRate]); 
- 
+
+  useEffect(() => {
+    if (transactionStep === 1) {
+      const timeout = setTimeout(() => {
+        setTransactionStep(2); 
+      }, 10000); 
+      return () => clearTimeout(timeout);
+    }
+  }, [transactionStep]);
+
   const handleConfirm = () => { 
     setTransactionStep(1); 
   }; 
