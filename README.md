@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# Global Currency Exchange System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Overview](#overview)
+- [Features](#features)
+- [Project Workflow](#project-workflow)
+- [Technologies Used](#technologies-used)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Database](#database)
+- [Installation and Setup](#installation-and-setup)
+  - [Prerequisites](#prerequisites)
+  - [Steps to Set Up](#steps-to-set-up)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Future Enhancements](#future-enhancements)
+- [Contribution](#contribution)
 
-In the project directory, you can run:
+## Overview
+A React.js application designed for streamlined and intuitive currency exchange. This system offers real-time exchange rates, multilingual support, and a user-friendly workflow, catering to both local and international users.
 
-### `npm start`
+## Features
+- **Real-Time Exchange Rates**: Fetches live currency rates through an API.
+- **Multi-Currency Support**: Enables direct conversions without intermediaries.
+- **Multilingual Interface**: Available in English, Armenian, and Russian.
+- **User-Friendly Design**: Step-by-step transaction flow for an intuitive experience.
+- **Transaction Limits**: Real-time validation for currency-specific thresholds.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Workflow
+The project follows a modular and phase-based Agile approach:
+1. **Research and Planning**: Identified user needs and prioritized system features.
+2. **Design and Prototyping**: Created a UI prototype in Figma.
+3. **Development**: Built the frontend using React.js and integrated it with a backend API for live rates.
+4. **Testing and Refinement**: Conducted iterative testing to ensure smooth functionality.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
+### Frontend
+- **React.js**: Dynamic UI development.
+- **React Router**: For seamless navigation.
+- **Figma**: Prototyping the interface.
 
-### `npm test`
+### Backend
+- **TypeScript with Node.js**: Backend logic.
+- **NestJS Framework**: Modular and scalable API development.
+- **Swagger**: API documentation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Database
+- **MySQL**: For managing currency data and transaction logs.
 
-### `npm run build`
+## Installation and Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+Ensure the following are installed:
+- [Node.js](https://nodejs.org/)
+- [MySQL](https://www.mysql.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Steps to Set Up
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd currency-exchange
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install Dependencies**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Run the following command to install the necessary dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm install
+```
 
-## Learn More
+3. **Set Up Environment Variables**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a `.env` file in the root directory with the following structure:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```env
+APPLICATION_URL=http://localhost:5000/swagger#/
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_TYPE=mysql
+DATABASE_USER=<your-username>
+DATABASE_PASSWORD=<your-password>
+DATABASE_NAME=currency_exchange
+API_KEY=b45a408e9b658fb050dffbd29df00c7a
+```
 
-### Code Splitting
+- Replace `<your-username>` and `<your-password>` with your database credentials.
+- Use the provided `API_KEY`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+6. **Start the Backend**
 
-### Analyzing the Bundle Size
+Run the following command to start the backend in development mode:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run start:dev
+```
 
-### Making a Progressive Web App
+7. **Start the Frontend**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Run the following command to start the frontend:
 
-### Advanced Configuration
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+8. **Access the Application**
 
-### Deployment
+Open the application in your browser at [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+- Perform currency exchanges using the guided workflow.
+- Switch languages via the interface to experience multilingual support.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Structure
+
+- **Frontend:** Built with React.js and managed using `react-router-dom`.
+- **Backend:** Node.js with MySQL database integration.
+- **API Integration:** Fetches live rates using an external API.
+
+## Challenges and Solutions
+
+- **Accurate Exchange Rates:** Integrated an API for dynamic updates.
+- **Multilingual Support:** Centralized translations object for scalability.
+- **Validation:** Ensured currency-specific limits with real-time feedback.
+
+## Future Enhancements
+
+- Add fractional currency handling.
+- Integrate a card-based exchange mechanism.
+- Expand language options.
+
+## Contribution
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a feature branch:
+    ```bash
+    git checkout -b feature-name
+    ```
+3. Commit your changes:
+    ```bash
+    git commit -m "Add feature description"
+    ```
+4. Push to your branch:
+    ```bash
+    git push origin feature-name
+    ```
+5. Create a pull request on the main repository.
+
